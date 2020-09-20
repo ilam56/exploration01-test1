@@ -31,7 +31,9 @@ export class CalculatorComponent implements OnInit {
         case '-':
         case 'x':
         case '/': {
-          this.pastVal = this.curVal;
+          if(this.operator!=='none'){
+            this.pastVal = this.curVal;
+          }
           this.curVal = 0;
           this.operator = value;
           break;
@@ -51,8 +53,29 @@ export class CalculatorComponent implements OnInit {
             this.opVal = this.curVal;
           }
           switch(this.operator){
-
+            case 'x':{
+              this.curVal = this.pastVal * this.opVal;
+              break;
+            }
+            case '/':{
+              this.curVal = this.pastVal / this.opVal;
+              break;
+            }
+            case '+':{
+              this.curVal = this.pastVal + this.opVal;
+              break;
+            }
+            case '-':{
+              this.curVal = this.pastVal - this.opVal;
+              break;
+            }
+            default: {
+              break;
+            }
           }
+        }
+        default: {
+          break;
         }
       }
     }
