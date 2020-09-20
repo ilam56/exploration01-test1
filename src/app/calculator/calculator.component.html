@@ -1,5 +1,20 @@
 <div class="calcContainer">
   <ul class ="calcUl">
-    <li id = display>0</li>
+    <li id = "display">0</li>
+    <li id = "row1">
+      <ng-container *ngFor="let button of buttons">
+        <button *ngIf="button.row === 1">{{button.label}}</button>
+      </ng-container>
+    </li>
+    <li id = "row2">
+      <ng-container *ngFor="let button of buttons">
+        <button *ngIf="button.row === 2">{{button.label}}</button>
+      </ng-container>
+    </li>
+    <li id = "row3">
+      <ng-container *ngFor="let button of buttons">
+        <button *ngIf="button.row === 3">{{button.label}}</button>
+      </ng-container>
+    </li>
   </ul>
 </div>
