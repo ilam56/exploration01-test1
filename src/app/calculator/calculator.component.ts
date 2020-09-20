@@ -11,6 +11,7 @@ export class CalculatorComponent implements OnInit {
   curVal: number = 0;
   opVal: number = 0;
   pastVal: number = 0;
+  tempVal: number = 0;
   operator: string = 'none';
 
   constructor() { }
@@ -30,14 +31,19 @@ export class CalculatorComponent implements OnInit {
         case '-':
         case 'x':
         case '/': {
-
+          if(this.operator!=='none'){
+            this.runEquals(value);
+          }
             this.pastVal = this.curVal;
             this.curVal = 0;
-        
-          
             this.operator = value;
+            this.opVal = 0;
         
           break;
+        }
+        case '<-':{
+          curStr = curStr.slice(0,-1);
+          this.curVal = Number(curStr);
         }
         case 'C':{
           this.pastVal = 0;
@@ -48,32 +54,10 @@ export class CalculatorComponent implements OnInit {
         }
         case '+/-':{
           this.curVal = 0 - this.curVal;
+          break;
         }
         case '=': {
-          if(this.opVal === 0){
-            this.opVal = this.curVal;
-          }
-          switch(this.operator){
-            case 'x':{
-              this.curVal = this.pastVal * this.opVal;
-              break;
-            }
-            case '/':{
-              this.curVal = this.pastVal / this.opVal;
-              break;
-            }
-            case '+':{
-              this.curVal = this.pastVal + this.opVal;
-              break;
-            }
-            case '-':{
-              this.curVal = this.pastVal - this.opVal;
-              break;
-            }
-            default: {
-              break;
-            }
-          }
+          this.runEquals(value);
         }
         default: {
           break;
@@ -84,5 +68,42 @@ export class CalculatorComponent implements OnInit {
     document.getElementById('display').innerHTML = this.curVal.toString();
 
   }
+
+  runEquals(value: string){
+            if(this.opVal === 0){
+            this.opVal = this.curVal;
+            this.curVal = this.pastVal;
+          }
+          switch(this.operator){
+            case 'x':{
+              this.tempVal = this.curVal;
+              this.curVal = this.curVal * this.opVal;
+              this.pastVal = this.curVal;
+              break;
+            }
+            case '/':{
+              this.tempVal = this.curVal;
+              this.curVal = this.curVal / this.opVal;
+              this.pastVal = this.curVal;
+              break;
+            }
+            case '+':{
+              this.tempVal = this.curVal;
+              this.curVal = this.curVal + this.opVal;
+              this.pastVal = this.curVal;
+              break;
+            }
+            case '-':{
+              this.tempVal = this.curVal;
+              this.curVal = this.curVal - this.opVal;
+              this.pastVal = this.curVal;
+              break;
+            }
+            default: {
+              break;
+            }
+          }
+        }
+  
 
 }

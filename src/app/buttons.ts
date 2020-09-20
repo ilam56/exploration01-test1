@@ -40,6 +40,10 @@ export const buttons = [
     row: 2,
   },
   {
+    label: '<-',
+    row: 2,
+  },
+  {
     label: '7',
     row: 1,
   },
