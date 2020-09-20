@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { FirstComponent } from './first/first.component';
 import { SecondComponent } from './second/second.component';
+import { TopBarComponent } from './top-bar/top-bar.component';
 
 @NgModule({
   imports:      [ 
@@ -16,7 +17,7 @@ import { SecondComponent } from './second/second.component';
     ],
   declarations: [ 
     AppComponent, 
-    HelloComponent, FirstComponent, SecondComponent 
+    HelloComponent, FirstComponent, SecondComponent, TopBarComponent 
     ],
   bootstrap:    [ AppComponent ]
 })
