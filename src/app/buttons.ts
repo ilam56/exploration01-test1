@@ -60,7 +60,7 @@ export const buttons = [
     row: 1,
   },
   {
-    label: '-',
+    label: 'x',
     row: 1,
   },
   {
