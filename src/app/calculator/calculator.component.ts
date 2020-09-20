@@ -42,8 +42,9 @@ export class CalculatorComponent implements OnInit {
           break;
         }
         case '<-':{
-          curStr = curStr.slice(0,-1);
+          curStr = curStr.substring(0,curStr.length-1);
           this.curVal = Number(curStr);
+          break;
         }
         case 'C':{
           this.pastVal = 0;
@@ -58,6 +59,7 @@ export class CalculatorComponent implements OnInit {
         }
         case '=': {
           this.runEquals(value);
+          break;
         }
         default: {
           break;
