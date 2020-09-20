@@ -10,7 +10,8 @@ export class CalculatorComponent implements OnInit {
   buttons = buttons;
   curVal: number = 0;
   opVal: number = 0;
-  pastVal :number = 0;
+  pastVal: number = 0;
+  operator: string = 'none';
 
   constructor() { }
 
@@ -26,7 +27,33 @@ export class CalculatorComponent implements OnInit {
     }
     else{
       switch(value){
-        
+        case '+':
+        case '-':
+        case 'x':
+        case '/': {
+          this.pastVal = this.curVal;
+          this.curVal = 0;
+          this.operator = value;
+          break;
+        }
+        case 'C':{
+          this.pastVal = 0;
+          this.curVal = 0;
+          this.opVal = 0;
+          this.operator = 'none';
+          break;
+        }
+        case '+/-':{
+          this.curVal = 0 - this.curVal;
+        }
+        case '=': {
+          if(this.opVal === 0){
+            this.opVal = this.curVal;
+          }
+          switch(this.operator){
+
+          }
+        }
       }
     }
 
