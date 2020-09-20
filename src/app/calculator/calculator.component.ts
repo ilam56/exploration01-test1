@@ -19,11 +19,10 @@ export class CalculatorComponent implements OnInit {
   }
 
   update(value: string){
-    let valNum = Number(value);
     let curStr = this.curVal.toString();
     if(!isNaN(Number(value))){
       curStr = curStr + value;
-      this.curVal = parseFloat(curStr);
+      this.curVal = Number(curStr);
     }
     else{
       switch(value){
@@ -31,11 +30,13 @@ export class CalculatorComponent implements OnInit {
         case '-':
         case 'x':
         case '/': {
-          if(this.operator!=='none'){
+
             this.pastVal = this.curVal;
-          }
-          this.curVal = 0;
-          this.operator = value;
+            this.curVal = 0;
+        
+          
+            this.operator = value;
+        
           break;
         }
         case 'C':{
