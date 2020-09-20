@@ -51,6 +51,9 @@ export class CalculatorComponent implements OnInit {
         case '<-':{
           curStr = curStr.substring(0,curStr.length-1);
           this.curVal = Number(curStr);
+          if(isNaN(this.curVal)){
+            this.curVal = 0;
+          }
           break;
         }
         case 'C':{
